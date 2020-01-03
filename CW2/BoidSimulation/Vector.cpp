@@ -1,5 +1,6 @@
 #include "Vector.h"
 
+// Vector Class using some mathematical expressions that will be used for the implementation of the simulation 
 // Function for the addition in the Vector
 Vector Addition(Vector u, Vector v) {
 	Vector w;
