@@ -16,7 +16,6 @@ class Boids;
 class Obstacles;
 class Flock;
 
-extern int size;
 extern Flock* flock;
 
 // Movement Class
@@ -37,6 +36,24 @@ Vector Alignment(Boids* bj);
 // Cohesion Function Description
 // Boids should remain together as a group and move towards the center of mass of the local flock
 Vector Cohesion(Boids* bj);
+
+//After implementing the 3 basic rules for the flock we go on and implement some extra functions to make the simulation more interesting
+// 4) Following a Leader
+// 5) Avoiding Obstacles
+// 6) Predator Pursuing BOids
+// 7) Boids Avoiding Predator
+
+// The flock follows a Boid called the Leader
+Vector towardsLeader(Boids* bj);
+
+// The flock avoids the random obstacles on their way
+void avoidObstacles(Boids* bj);
+
+// Predator pursuing boids
+Vector pursueBoids(Boids* b);
+
+// Boids aboiving the predator pursuing them
+Vector fleePredator(Boids* p, Boids* b);
 
 // Then we go and draw the boids and obstacles with OpenGL applyuing the movements in the Boid Class]
 // Drawing the Cube obstacles

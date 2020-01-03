@@ -82,6 +82,7 @@ Vector Cohesion(Boids* bj) {
 }
 
 
+
 // Draw a series of cubes as obstacles
 void drawObstacles() {
 

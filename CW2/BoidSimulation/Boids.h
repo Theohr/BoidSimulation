@@ -9,8 +9,6 @@
 #include "Movement.h"
 #include "Main.h"
 
-extern float alpha, beta;
-
 // Indicatind the Leader and the Predator
 #define LEADER 0
 #define PREDATOR 99
@@ -22,6 +20,8 @@ class Boids {
 		Vector position;
 		Vector velocity;
 		int id;
+		float alpha;
+		float beta;
 
 	public:
 		// The boid constructor
@@ -34,13 +34,17 @@ class Boids {
 
 		// Setters
 		void setPosition(GLdouble x, GLdouble y, GLdouble z);
-		void setPosition(Vector p);
+		void setPosition(Vector pos);
 		void setVelocity(GLdouble x, GLdouble y, GLdouble z);
 
 		// Function to draw the boids
 		void draw();
 
+		// Function to update boid movement
+		void move(Boids* b, int div);
 
+		// Putting some invis walls in the scene so boids dont run wild outside of it
+		void walls();
 };
 
 #endif

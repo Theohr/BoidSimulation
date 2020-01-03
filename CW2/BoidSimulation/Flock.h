@@ -12,9 +12,6 @@
 
 using namespace std;
 
-extern bool hide;
-extern int i;
-
 class Boids;
 class Obstacles;
 
@@ -31,6 +28,8 @@ class Flock {
 		Boids* leader;
 		Boids* predator;
 		int size;
+		int i;
+		bool hide;
 
 	public:
 
@@ -49,6 +48,15 @@ class Flock {
 
 		// calculates the radius of the flock
 		float radius();
+
+		//// Extra function for user to add boids to the flock but currently not working
+		//void addBoid();
+
+		// Extra function to remove boids from the flock
+		void removeBoid();
+
+		// Function to update the movements of the flock
+		void moveBoids();
 
 		//Function to draw the boids
 		void drawBoids();

@@ -22,6 +22,7 @@ class Flock;
 
 // creating the public iteration and the list of obstacles
 typedef std::list<Obstacles>::iterator ItObs;
+
 extern std::list<Obstacles> obs;
 
 // Function when window resizes for the scene to not mess up

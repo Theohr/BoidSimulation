@@ -39,6 +39,51 @@ Boids* Flock::getPredator() {
 	return predator; 
 }
 
+//// FUnction for the user to add boids into the flock on button click
+//void Flock::addBoid() {
+//	Boids* boid;
+//
+//	// if the size is higher than the size we set then the size of the flock gets increased
+//	if ((signed)boids.size() > size) {
+//		size++; return;
+//	}
+//
+//	boid = new Boids(size);
+//
+//	boids.push_back(*boid);
+//
+//	size++;
+//}
+
+//  Function for the user to remove boids from the flock on button click
+void Flock::removeBoid() {
+
+	boids.pop_front();
+
+	size--;
+}
+
+// Function that moves each boid accordingly using the move function implemented in Boids.cpp
+void Flock::moveBoids() {
+
+	ItObs ita;
+	float div = 1;
+
+	// gets the movements for leader and predator from the function move
+	predator->move(predator, div);
+	leader->move(leader, div);
+
+	// using the external iteration for the loop to check each boid in the flock
+	for (it = boids.begin(); it != boids.end(); it++) {
+
+		Boids* boid = &(*it);
+
+
+
+		boid->move(boid, div);
+	}
+}
+
 
 // Function to draw the boids using the function draw implemented in boids.cpp
 void Flock::drawBoids() {
