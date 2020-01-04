@@ -4,18 +4,27 @@ using namespace std;
 
 float alpha = 45;
 float beta = 90;
+float zoom = 1.0;
+float goal = 1;
+
 int viewMode = 1;
+int w = 1400, h = 800;
+int i;
+
 bool hide = false;
 bool pause = false;
 bool tf = false;
-float zoom = 1.0;
-int w = 1400, h = 800;
-int i;
-float goal = 1;
 
 Vector view, center;
-std::list<Obstacles> obs;
+list<Obstacles> obs;
 Flock* flock;
+
+// Finally in main is where we watch over the flock 
+// Create the scene and render the obstacles
+// Display the scene and the flock 
+// Update the movements
+// User Interactions 
+// Main Function
 
 // Window resize function to stay always the same 
 void resize(int width, int height) {
@@ -176,19 +185,20 @@ void userInteractions(unsigned char key, int x, int y) {
 
 // Main function
 int main(int argc, char** argv) {
-	// Printing the instructions 
+	// User can also interact in the executable by clicking the buttons displayed in the instructions
+	// more detail in the run of the executable
 	cout << " ---User Instructions:---" << endl;
 	cout << "__________________________\n" << endl;
 	cout << " 1) Esc = Break Simulation." << endl;
 	cout << " 2) p = Pause Screen." << endl;
 	cout << " 3) b = Predator chases Boids in the scene." << endl;
-	cout << " 4) h = Hide/Unhide Leader." << endl;
+	//cout << " 4) h = Hide/Unhide Leader." << endl;
 	//cout << " 5) a = Add Boid to the flock." << endl;
-	cout << " 6) r = Remove Boid from the flock" << endl;
-	cout << " 7) x = Zoom Out" << endl;
-	cout << " 8) X = Zoom In" << endl;
-	cout << " 9) b = FLock breaks and try to flee from predator" << endl;
-	cout << " 10) v = Flock changes direction" << endl;
+	cout << " 4) r = Remove Boid from the flock" << endl;
+	cout << " 5) x = Zoom Out" << endl;
+	cout << " 6) X = Zoom In" << endl;
+	cout << " 7) b = FLock breaks and try to flee from predator" << endl;
+	cout << " 8) v = Flock changes direction" << endl;
 
 	// calling the rest of the functions to create the scene and the window
 	glutInit(&argc, argv);

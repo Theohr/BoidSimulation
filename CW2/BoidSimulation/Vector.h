@@ -3,6 +3,11 @@
 
 #include <math.h>
 
+// Hello this is a tutorial on how the code is build together for this Boid Simulation to run
+// It is built based on 6 classes. The Vector, Boids, Flock, Obstacles, Movement and Main 
+// We  start off with the Vector class to define some math expressions that will be used in the rest of the classes 
+// And also create a new and a null Vector
+
 // Structure of the Vector class with the floats x,y,z
 typedef struct {
 	float x;

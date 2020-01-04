@@ -1,5 +1,10 @@
 #include "Boids.h"
 
+// Then we implement the Boids Class seperating our Boids into caregories Normal, Leader, Predator each one getting their 
+// own position and velocity values based on their ID
+// Drawing our Boids using OpenGL and make them Move using the Vector class and the Movement rules implemented
+// in Movement Class
+
 using namespace std;
 
 // The Constructor indexing each boid 
@@ -51,7 +56,7 @@ void Boids::setPosition(Vector pos) {
 	position = pos; 
 }
 
-// Function that uses maths to get the boids velocity then sends everything in the DrawBoids Function in Movement.cpp
+// Function that uses maths to get the boids velocity and draw their direction based on their position 
 void Boids::draw() {
 	
 	float normal = sqrt(velocity.x * velocity.x + velocity.y * velocity.y);
@@ -99,6 +104,8 @@ void Boids::move(Boids* b, int div) {
 	// Check the ID of the boids and sets them their according values for their movement for every action
 	if (b->getID() == PREDATOR) {
 		w[0] = 0; w[1] = 0; w[2] = 0.002; w[3] = 0; w[4] = 2;
+		// Pursue the boids in with predator id
+		vec[4] = Multiplication(pursueBoids(b), w[4]);
 	}
 	else if (b->getID() == LEADER) {
 		w[0] = 0; w[1] = 0; w[2] = 0; w[3] = 0; w[4] = .01 / div;
@@ -106,12 +113,14 @@ void Boids::move(Boids* b, int div) {
 	}
 	else {
 		w[0] = 0.01 / div; w[1] = 0.005 / div; w[2] = 0.0005 / div; w[3] = 0.01 / div; w[4] = .01 / div;
-
+		// flee from predator if normal boids of te flock
+		vec[4] = Multiplication(fleePredator(flock->getPredator(), b), w[4]);
 	}
 	// Gets the Movement rules for the flock set in MOvement
 	vec[0] = Multiplication(Separation(b), w[0]);
 	vec[1] = Multiplication(Alignment(b), w[1]);
 	vec[2] = Multiplication(Cohesion(b), w[2]);
+	vec[3] = Multiplication(towardsLeader(b), w[3]);
 
 	temp = b->getVelocity();
 
@@ -132,6 +141,8 @@ void Boids::move(Boids* b, int div) {
 
 	b->setVelocity(temp.x, temp.y, temp.z);
 
+	// Avoiding obstacles based on the functions orders
+	avoidObstacles(b);
 
 	// updating their position 
 	position = Addition(position, velocity);

@@ -1,5 +1,9 @@
 #include "Obstacles.h"
 
+// Then we have the Obstacles class responsible for implementation of the Cube obstacles in our scene
+// with their location, radius and angle 
+// Using OpenGL in function draw to render them in the scene
+
 //Constructor 
 Obstacles::Obstacles() {
 	location = NullVector(); 

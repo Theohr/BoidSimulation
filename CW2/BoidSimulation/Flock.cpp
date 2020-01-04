@@ -1,5 +1,11 @@
 #include "Flock.h"
 
+// After creating the Boids we create the FLock's size, radius and centroid which the boids will be part of 
+// with the help of the Vector class and the function Distance
+// The drawBoids function which will call the draw from Boids to display the Leader, Predator and Normal Boids
+// And the moveBoids function calling the move function created in Boids 
+// and looping into the boids and obstacles list using the Vector Class to make the movements
+
 using namespace std;
 
 // Constructor
@@ -78,7 +84,14 @@ void Flock::moveBoids() {
 
 		Boids* boid = &(*it);
 
+		// inner loop using the functions iteration that checks the obstacles list and get their stats
+		for (ita = obs.begin(); ita != obs.end(); ita++) {
 
+			if (Magnitude(Difference(boid->getPosition(), (*ita).getLocation())) < (*ita).getRadius()) {
+				div = 1 / Magnitude(Difference(boid->getPosition(), (*ita).getLocation()));
+				break;
+			}
+		}
 
 		boid->move(boid, div);
 	}
