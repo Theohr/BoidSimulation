@@ -13,8 +13,10 @@
    What I would do differently is to add more flocks and boids in the scene and make them run freely and change flocks according to each boids velocity. Also, creating a 3-D scene and drawing actual Birds flying in the sky or fishes swimming in the water would be extra if I had more time.
   
 ### User Interactions
-
-  User has to run the solution first then the simulation will start on its own. Some functions were implemented so the user can use the buttons from the keyboard to interact and make changes to the executable such as:
+  
+  Firstly the User has to download the Solution and open it in Visual Studio (was built in VS2019) then run the solution and the simulation with the instructions will start running on its own.
+  
+  Some functions were implemented so the user can use the buttons from the keyboard to interact and make changes to the executable such as:
   
           1) Esc Key  = Breaks the program
           2) p  = Pause the Simulation
