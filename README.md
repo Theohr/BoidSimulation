@@ -1,7 +1,5 @@
 # Boid Simulation
 
-## 10578755
-
 ### Brief evaluation 
 
    This software attempts to simulate the behavior of a flock of boids. The Boids are rendered in the scene and function through the three basic rules Separation which will keeps them away from colliding with each other, Alignment which will make them move with the same speed and Cohesion making them moving with the average position of the local flock and maintain in a group. 
